@@ -1,0 +1,260 @@
+<!--
+Lynda Accommodation - Single-file Website (index.html)
+
+INSTRUCTIONS & STEP-BY-STEP (read before editing):
+
+Step 1 — Preview:
+  • Open this file (index.html) in a browser to preview the site locally.
+
+Step 2 — Customize content:
+  • Replace the text placeholders (company name, address, phone, email, room descriptions).
+  • Replace placeholder images (in the <img> tags) with your own images (put images in same folder or use hosted URLs).
+
+Step 3 — Contact / Booking form setup:
+  Option A (zero-backend): Use Formspree (https://formspree.io) or Getform. Replace the form action URL in the contact form with your Formspree endpoint.
+  Option B (static-host built-in forms): If using Netlify, enable Netlify Forms and leave the form action empty; add data-netlify="true" attribute.
+  Option C (server): Point the form to your backend API endpoint.
+
+Step 4 — Host the site:
+  • GitHub Pages: create a repo, push this file as index.html to the repo root, enable Pages in settings.
+  • Netlify / Vercel: drag & drop folder with this file or connect your repo for automatic deploys.
+
+Step 5 — Add a custom domain (optional):
+  • Buy a domain (Namecheap/GoDaddy), add DNS A/CNAME records per host instructions. Enable HTTPS (Netlify/GitHub Pages provide automatic TLS).
+
+Step 6 — Improve & Expand:
+  • Add booking calendar or integration (e.g., Calendly, FareHarbor, or a custom backend).
+  • Add payment: integrate PayPal, Stripe, or a local payment gateway (Flutterwave for Uganda). Use a secure backend for payments.
+  • Add analytics (Google Analytics / Plausible) and SEO meta tags.
+
+Notes for images: Use JPEG or WebP. Keep images optimized for web (compress to ~100-300KB each for faster load).
+
+-----
+
+Below is a complete single-file website. Edit text and image URLs. Save as index.html and open in a browser.
+
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lynda Accommodation — Rest, Relax, Stay</title>
+  <meta name="description" content="Lynda Accommodation — Comfortable rooms, affordable rates, friendly service. Book a night or a long stay." />
+  <style>
+    :root{--accent:#0ea5a4;--dark:#0f172a;--muted:#6b7280;--bg:#f8fafc}
+    *{box-sizing:border-box}body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin:0; color:#0f172a; background:var(--bg); line-height:1.45}
+    header{background:white;box-shadow:0 2px 8px rgba(15,23,42,0.06);position:sticky;top:0;z-index:40}
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+    .nav{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand h1{font-size:20px;margin:0}
+    nav a{margin-left:18px;text-decoration:none;color:var(--dark);font-weight:600}
+    .hero{display:grid;grid-template-columns:1fr;gap:18px;padding:40px 20px;align-items:center}
+    .hero-inner{background:white;padding:28px;border-radius:12px;box-shadow:0 6px 30px rgba(2,6,23,0.06)}
+    .cta{display:inline-block;background:var(--accent);color:white;padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:700}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:18px}
+    .card{background:white;padding:16px;border-radius:12px;box-shadow:0 8px 18px rgba(2,6,23,0.04)}
+    .card img{width:100%;height:170px;object-fit:cover;border-radius:8px}
+    .muted{color:var(--muted)}
+    .features{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
+    .chip{background:#eefafa;padding:8px 12px;border-radius:999px;font-weight:600}
+    footer{padding:28px 20px;margin-top:28px}
+    .two-col{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .gallery img{width:100%;height:100px;object-fit:cover;border-radius:8px}
+    form input, form textarea, form button{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef0;margin-top:8px}
+    form label{font-weight:700}
+    .small{font-size:13px;color:var(--muted)}
+    /* mobile */
+    @media (max-width:880px){.two-col{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}.hero{padding:20px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <!-- Replace or add a logo image here -->
+        <div style="width:48px;height:48px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#38bdf8);display:flex;align-items:center;justify-content:center;color:white;font-weight:800">LA</div>
+        <div>
+          <h1>Lynda Accommodation</h1>
+          <div class="small muted">Comfort • Cleanliness • Care</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#rooms">Rooms</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-inner">
+        <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+          <div style="flex:1">
+            <h2 style="margin-top:0">Welcome to Lynda Accommodation</h2>
+            <p class="muted">A warm, safe place to rest—whether you're here for a night or staying for a while. We offer comfortable private rooms, shared options, and friendly service.</p>
+            <div class="features">
+              <div class="chip">Free Wi‑Fi</div>
+              <div class="chip">24/7 Reception</div>
+              <div class="chip">Private Rooms</div>
+              <div class="chip">Affordable Rates</div>
+            </div>
+            <p style="margin-top:14px"><a class="cta" href="#contact">Book / Enquire</a></p>
+          </div>
+          <div style="width:320px;">
+            <img src="https://images.unsplash.com/photo-1501117716987-c8e6b8ef3f3d?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Room" style="width:100%;height:200px;object-fit:cover;border-radius:8px">
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;margin-top:8px">
+        <div class="card">
+          <h3 style="margin:0">Opening Hours</h3>
+          <p class="small muted" style="margin-top:6px">Check-in: 2:00 PM • Check-out: 11:00 AM<br/>Reception: 24/7</p>
+        </div>
+        <div class="card">
+          <h3 style="margin:0">Contact</h3>
+          <p class="small muted" style="margin-top:6px">Phone: +256 700 000 000<br/>Email: hello@lyndaaccommodation.example</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="rooms" style="margin-top:22px">
+      <h2>Rooms & Rates</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Single Room">
+          <h3>Single Room</h3>
+          <p class="muted">Cozy single bed, private bathroom. Ideal for solo travellers.</p>
+          <p style="font-weight:800">UGX 40,000 / night</p>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Double Room">
+          <h3>Double Room</h3>
+          <p class="muted">Spacious double bed with amenities.</p>
+          <p style="font-weight:800">UGX 70,000 / night</p>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1505691723518-34d39be1e38c?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Dorm / Shared">
+          <h3>Shared Dorm</h3>
+          <p class="muted">Affordable bunk beds, common bathroom.</p>
+          <p style="font-weight:800">UGX 20,000 / night</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" style="margin-top:22px">
+      <h2>Gallery</h2>
+      <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="">
+        <img src="https://images.unsplash.com/photo-1505692794401-3a4cb5d8f7ab?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="">
+        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="">
+        <img src="https://images.unsplash.com/photo-1505691723518-34d39be1e38c?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="">
+        <img src="https://images.unsplash.com/photo-1493809842364-78817add7ffb?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="">
+        <img src="https://images.unsplash.com/photo-1501117716987-c8e6b8ef3f3d?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="">
+      </div>
+    </section>
+
+    <section id="amenities" style="margin-top:22px">
+      <h2>Amenities</h2>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <div class="card" style="flex:1;min-width:220px">
+          <h3>Clean Rooms</h3>
+          <p class="muted">Daily housekeeping and clean linens.</p>
+        </div>
+        <div class="card" style="flex:1;min-width:220px">
+          <h3>Breakfast</h3>
+          <p class="muted">Optional breakfast available on request.</p>
+        </div>
+        <div class="card" style="flex:1;min-width:220px">
+          <h3>Security</h3>
+          <p class="muted">Secure premises and friendly staff.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:22px">
+      <h2>Contact & Booking</h2>
+      <div class="two-col">
+        <div>
+          <p class="muted">Send us your booking request — we'll confirm availability and total price.</p>
+          <!-- Form preconfigured for Netlify Forms: when you deploy to Netlify this will collect submissions. If you prefer Formspree, replace the form tag with: <form id="bookingForm" action="https://formspree.io/f/your-form-id" method="POST"> -->
+          <form id="bookingForm" name="booking" method="POST" data-netlify="true">
+            <input type="hidden" name="form-name" value="booking" />
+            <label for="name">Full name</label>
+            <input id="name" name="name" required placeholder="Your full name">
+
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required placeholder="you@example.com">
+
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" required placeholder="+256 7XX XXX XXX">
+
+            <label for="room">Room type</label>
+            <select id="room" name="room">
+              <option>Single Room</option>
+              <option>Double Room</option>
+              <option>Shared Dorm</option>
+            </select>
+
+            <label for="dates">Arrival & Departure</label>
+            <input id="dates" name="dates" placeholder="YYYY-MM-DD to YYYY-MM-DD" required>
+
+            <label for="message">Message / Special requests</label>
+            <textarea id="message" name="message" rows="4" placeholder="Any special requests"></textarea>
+
+            <button type="submit" style="margin-top:10px">Send booking request</button>
+            <p class="small muted">By sending this request you consent to be contacted regarding your booking.</p>
+          </form>
+
+          <div style="margin-top:14px" class="card">
+            <h3>Location</h3>
+            <p class="muted">Replace this with your actual address. Embed Google Maps if desired.</p>
+            <!-- Example static Google Maps embed (replace src with your place) -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127743.123456789!2d32.5!3d0.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDE4JzAwLjAiTiAzMsKwMzAnMDAuMCJF!5e0!3m2!1sen!2sug!4v0000000000000" width="100%" height="180" style="border:0;border-radius:8px" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <aside class="card">
+          <h3>Quick Info</h3>
+          <p class="muted"><strong>Phone:</strong> +256 700 000 000<br><strong>Email:</strong> hello@lyndaaccommodation.example</p>
+          <h4>Pricing example</h4>
+          <p class="muted">Single: UGX 40,000 • Double: UGX 70,000 • Dorm: UGX 20,000</p>
+          <h4>Policies</h4>
+          <p class="small muted">Check-in after 2:00 PM. Check-out before 11:00 AM. Cancellation: please notify 24 hours in advance.</p>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div>
+        <strong>Lynda Accommodation</strong>
+        <div class="small muted">Made with care • Small business</div>
+      </div>
+      <div class="small muted">© <span id="year"></span> Lynda Accommodation. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Basic form handler to show success message (client-side only)
+    document.getElementById('bookingForm').addEventListener('submit', function(e){
+      // If you're using Formspree or similar, the browser will navigate — this handler is only for local preview.
+      if(window.location.hostname === 'localhost' || window.location.protocol === 'file:'){
+        e.preventDefault();
+        alert('Booking request prepared. When deployed, the form will send to the configured endpoint.');
+        this.reset();
+      }
+    });
+  </script>
+</body>
+</html>
